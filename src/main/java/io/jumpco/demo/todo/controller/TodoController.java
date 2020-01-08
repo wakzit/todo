@@ -1,5 +1,6 @@
 package io.jumpco.demo.todo.controller;
 
+import io.jumpco.demo.todo.model.EntityNotFoundException;
 import io.jumpco.demo.todo.model.Todo;
 import io.jumpco.demo.todo.model.TodoService;
 import org.springframework.stereotype.Controller;
@@ -32,7 +33,7 @@ public class TodoController {
     }
 
     @GetMapping("/todo/edit/{id}")
-    public ModelAndView startEdit(@PathVariable("id") Long id) {
+    public ModelAndView startEdit(@PathVariable("id") Long id) throws EntityNotFoundException {
         Todo item = todoService.find(id);
         ModelAndView result = new ModelAndView("add-edit");
         result.addObject("mode", "update");
@@ -52,7 +53,7 @@ public class TodoController {
     }
 
     @PostMapping("/todo/update")
-    public View update(@Valid @ModelAttribute Todo todo) {
+    public View update(@Valid @ModelAttribute Todo todo) throws EntityNotFoundException {
         todoService.update(todo);
         return home();
     }
@@ -70,7 +71,7 @@ public class TodoController {
     }
 
     @GetMapping(value = "/todo/complete/{id}")
-    public View complete(@PathVariable("id") Long id) {
+    public View complete(@PathVariable("id") Long id) throws EntityNotFoundException {
         todoService.complete(id);
         return home();
     }

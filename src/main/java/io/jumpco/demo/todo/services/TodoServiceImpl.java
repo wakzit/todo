@@ -25,10 +25,12 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
-    public Todo update(Todo item) {
+    public Todo update(Todo item) throws EntityNotFoundException {
         Assert.notNull(item.getId(), "Updating an item requires an id " + item);
         Optional<Todo> existing = todoRepository.findById(item.getId());
-        Assert.isTrue(existing.isPresent(), "Cannot find existing item " + item.getId());
+        if (!existing.isPresent()) {
+            throw new EntityNotFoundException("Cannot find Todo " + item);
+        }
         final Todo todo = existing.get();
         todo.setDescription(item.getDescription());
         todo.setOrder(item.getOrder());
@@ -55,16 +57,18 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
-    public Todo complete(Long id) {
+    public Todo complete(Long id) throws EntityNotFoundException {
         Optional<Todo> existing = todoRepository.findById(id);
-        Assert.isTrue(existing.isPresent(), "Cannot find existing item " + id);
+        if (!existing.isPresent()) {
+            throw new EntityNotFoundException("Cannot find Todo " + id);
+        }
         Assert.isTrue(!existing.get().getCompleted(), "Item was already completed");
         existing.get().setCompleted(true);
         return todoRepository.save(existing.get());
     }
 
     @Override
-    public Todo find(Long id) {
+    public Todo find(Long id) throws EntityNotFoundException {
         Optional<Todo> existing = todoRepository.findById(id);
         if (!existing.isPresent()) {
             throw new EntityNotFoundException("Cannot find Todo " + id);
