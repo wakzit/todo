@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.StringJoiner;
 
 @Entity
@@ -15,13 +16,17 @@ public class Todo {
     private Long id;
     @NotNull
     @Column(name = "title_s")
+    @Size(min = 3, max = 64)
     private String title;
     @NotNull
+    @Size(min = 3, max = 255)
     @Column(name = "description_s")
     private String description;
     @Column(name = "completed_f")
+    @NotNull
     private boolean completed;
     @Column(name = "order_i")
+    @NotNull
     private int order;
 
     public Long getId() {
