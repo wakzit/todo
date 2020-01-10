@@ -17,7 +17,7 @@
             <td>
                 <form:input path="title"></form:input>
             </td>
-            <td>
+            <td style="color: red">
                 <form:errors path="title"></form:errors>
             </td>
         </tr>
@@ -28,7 +28,7 @@
             <td>
                 <form:textarea path="description" cols="40" rows="25"></form:textarea>
             </td>
-            <td>
+            <td style="color: red">
                 <form:errors path="description"></form:errors>
             </td>
         </tr>
@@ -36,10 +36,9 @@
             <td>
                 <label>Actions</label>
             </td>
-            <td>
-                <form:button name="cancel">Cancel</form:button>
-                &nbsp;
+            <td>&nbsp;
                 <input type="submit" name="submit" value="Submit">
+                <form:button name="cancel">Cancel</form:button>
             </td>
         </tr>
     </table>

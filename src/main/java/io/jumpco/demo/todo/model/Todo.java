@@ -22,12 +22,12 @@ public class Todo {
     @Size(min = 3, max = 255)
     @Column(name = "description_s")
     private String description;
-    @Column(name = "completed_f")
+    @Column(name = "completed_f", columnDefinition = "boolean default false")
     @NotNull
-    private boolean completed;
-    @Column(name = "order_i")
+    private boolean completed = false;
+    @Column(name = "order_i", columnDefinition = "integer default 0")
     @NotNull
-    private int order;
+    private int order = 0;
 
     public Long getId() {
         return id;
