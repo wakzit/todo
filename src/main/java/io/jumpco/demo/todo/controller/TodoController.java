@@ -1,6 +1,7 @@
 package io.jumpco.demo.todo.controller;
 
 import io.jumpco.demo.todo.model.EntityNotFoundException;
+import io.jumpco.demo.todo.model.Grading;
 import io.jumpco.demo.todo.model.Todo;
 import io.jumpco.demo.todo.model.TodoService;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class TodoController {
@@ -52,7 +55,7 @@ public class TodoController {
         return home();
     }
 
-    @PostMapping("/todo/update")
+   @PostMapping("/todo/update")
     public ModelAndView update(@Valid @ModelAttribute Todo todo, BindingResult bindingResult, Model model) throws EntityNotFoundException {
         if (bindingResult.hasErrors()) {
             ModelAndView result = new ModelAndView("add-edit");
@@ -100,4 +103,14 @@ public class TodoController {
         result.addObject("todos", todoService.list(null));
         return result;
     }
+  //modify
+  @RequestMapping(value = "/todo/Grading")
+  public ModelAndView getPages(){
+      List<Grading> grading = new ArrayList<Grading>( Arrays.asList(Grading.values() ));
+      ModelAndView model = new ModelAndView("create");
+      model.addObject("grading", grading);
+
+      return model;
+  }
+    //modify
 }

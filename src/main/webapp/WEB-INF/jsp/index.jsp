@@ -1,6 +1,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
+<div style="background-color:#e83e8c;
+ background-attachment: scroll;">
 <html lang="en">
 <head>
     <meta charset="UTF-8">

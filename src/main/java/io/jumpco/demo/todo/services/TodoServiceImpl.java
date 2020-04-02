@@ -7,6 +7,7 @@ import io.jumpco.demo.todo.model.TodoService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import javax.swing.*;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -59,11 +60,19 @@ public class TodoServiceImpl implements TodoService {
     @Override
     public Todo complete(Long id) throws EntityNotFoundException {
         Optional<Todo> existing = todoRepository.findById(id);
-        if (!existing.isPresent()) {
-            throw new EntityNotFoundException("Cannot find Todo " + id);
+       try{
+           if (!existing.isPresent())
+           {
+               throw new EntityNotFoundException("Cannot find Todo " + id);
+           }
+           Assert.isTrue(!existing.get().getCompleted(), "Item was already completed");
+           existing.get().setCompleted(true);
+
+       }
+       catch (Exception e)
+        {
+
         }
-        Assert.isTrue(!existing.get().getCompleted(), "Item was already completed");
-        existing.get().setCompleted(true);
         return todoRepository.save(existing.get());
     }
 
