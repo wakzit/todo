@@ -15,12 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Controller
 public class TodoController {
-    private TodoService todoService;
+    private final TodoService todoService;
 
     public TodoController(TodoService todoService) {
         this.todoService = todoService;
@@ -106,9 +107,9 @@ public class TodoController {
   //modify
   @RequestMapping(value = "/todo/Grading")
   public ModelAndView getPages(){
-      List<Grading> grading = new ArrayList<Grading>( Arrays.asList(Grading.values() ));
+      List<Grading> grading = new ArrayList<>(Arrays.asList(Grading.values()));
       ModelAndView model = new ModelAndView("create");
-      model.addObject("grading", grading);
+      model.addObject("Grading", grading);
 
       return model;
   }

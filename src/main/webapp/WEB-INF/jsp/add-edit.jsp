@@ -49,16 +49,16 @@ background-attachment: scroll;">
             <input class="btn btn-primary" alert="Submitted" type="submit" onclick="javascript:alert('YOU HAVE SUBMITTED')" name="submit" value="Submit"  >
 
             <form:button class="btn btn-secondary" name="cancel">Cancel</form:button>
+
         </div>
-<!--modify-->
-        <select name="Grading" name="grading" id="grading">
-            <option value="Select"></option>
-            <c:forEach var="grading" items="${grading}">
-                <li>${grading}</li>
-            </c:forEach>
-        </select>
-        <!--/modify-->
     </form:form>
+
+    <select name="Grading" name="grading" id="grading">
+        <option value="Select"></option>
+        <c:forEach var="Grading" items="${grading}">
+            <li>${Grading}</li>
+        </c:forEach>
+    </select>
 
 </div>
 </body>

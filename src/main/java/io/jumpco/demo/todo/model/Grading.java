@@ -6,7 +6,7 @@ public enum Grading {
 
 private String grading;
 
-    Grading(String labOwner) {
+    Grading(String grading) {
         this.grading = grading;
     }
 
