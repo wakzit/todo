@@ -50,15 +50,15 @@ background-attachment: scroll;">
 
             <form:button class="btn btn-secondary" name="cancel">Cancel</form:button>
 
+            <form:label path = "grading">Grading</form:label>
+            <form:select path = "grading">
+                <form:option value = "NONE" label = "SELECT"/>
+                <form:options items = "${gradingList}" />
+            </form:select>
         </div>
     </form:form>
 
-    <select name="Grading" name="grading" id="grading">
-        <option value="Select"></option>
-        <c:forEach var="Grading" items="${grading}">
-            <li>${Grading}</li>
-        </c:forEach>
-    </select>
+
 
 </div>
 </body>

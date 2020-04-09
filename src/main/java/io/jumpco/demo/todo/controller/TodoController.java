@@ -1,23 +1,19 @@
 package io.jumpco.demo.todo.controller;
 
 import io.jumpco.demo.todo.model.EntityNotFoundException;
-import io.jumpco.demo.todo.model.Grading;
 import io.jumpco.demo.todo.model.Todo;
 import io.jumpco.demo.todo.model.TodoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+
+//import io.jumpco.demo.todo.model.Grading;
 
 @Controller
 public class TodoController {
@@ -105,13 +101,19 @@ public class TodoController {
         return result;
     }
   //modify
-  @RequestMapping(value = "/todo/Grading")
+  /*@GetMapping(value = "/todo/Grading")
   public ModelAndView getPages(){
       List<Grading> grading = new ArrayList<>(Arrays.asList(Grading.values()));
       ModelAndView model = new ModelAndView("create");
       model.addObject("Grading", grading);
-
       return model;
-  }
-    //modify
+  }*/
+    @ModelAttribute("gradingList")
+    public Map<String, String> gradingList(){
+        Map<String, String> gradingList = new HashMap<String, String>();
+        gradingList.put("inc", "INCOMPLETE");
+        gradingList.put("pc", "PARTIAL_COMPLETE");
+        gradingList.put("c", "COMPLETE");
+        return gradingList;
+    }
 }

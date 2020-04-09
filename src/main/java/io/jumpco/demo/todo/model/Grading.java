@@ -4,13 +4,14 @@ public enum Grading {
     INCOMPLETE, PARTIAL_COMPLETE, COMPLETE;
  Grading(){}
 
-private String grading;
+ /*protected String grading;
 
-    Grading(String grading) {
+    public void setGrading(String grading) {
         this.grading = grading;
     }
 
     public String getGrading(){
         return grading;
-    }
+    }*/
+
 }

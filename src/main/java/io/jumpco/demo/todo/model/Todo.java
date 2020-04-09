@@ -7,6 +7,17 @@ import java.util.StringJoiner;
 
 @Entity
 public class Todo {
+    //
+    protected String grading;
+
+    public void setGrading(String grading) {
+        this.grading = grading;
+    }
+
+    public String getGrading(){
+        return grading;
+    }
+    //
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

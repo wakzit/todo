@@ -25,6 +25,7 @@
             <th scope="col"><label>Title</label></th>
             <th scope="col"><label>Completed</label></th>
             <th scope="col"><label>Action</label></th>
+            <th scope="col"><label>Grading</label></th>
         </tr>
         </thead>
         <tbody>
