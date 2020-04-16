@@ -1,23 +1,13 @@
 package io.jumpco.demo.todo.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.StringJoiner;
 
 @Entity
 public class Todo {
-    //
-    protected String grading;
-
-    public void setGrading(String grading) {
-        this.grading = grading;
-    }
-
-    public String getGrading(){
-        return grading;
-    }
-    //
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -105,4 +95,16 @@ public class Todo {
                 .add("order=" + order)
                 .toString();
     }
+
+    //we are here
+    @NotEmpty
+    String grading;
+
+    public String getGrading(){
+        return grading;
+    }
+    public void setGrading(String grading) {
+        this.grading = grading;
+    }
+    //we end here
 }

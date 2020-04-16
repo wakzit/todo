@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
-//import io.jumpco.demo.todo.model.Grading;
+//imports of the example
+//end of imports of the example
 
 @Controller
 public class TodoController {
@@ -93,21 +95,13 @@ public class TodoController {
     private String home() {
         return "redirect:/";
     }
-
     @GetMapping("/")
     public ModelAndView index() {
         ModelAndView result = new ModelAndView("index");
         result.addObject("todos", todoService.list(null));
         return result;
     }
-  //modify
-  /*@GetMapping(value = "/todo/Grading")
-  public ModelAndView getPages(){
-      List<Grading> grading = new ArrayList<>(Arrays.asList(Grading.values()));
-      ModelAndView model = new ModelAndView("create");
-      model.addObject("Grading", grading);
-      return model;
-  }*/
+   /* ModelAndView mav = null;
     @ModelAttribute("gradingList")
     public Map<String, String> gradingList(){
         Map<String, String> gradingList = new HashMap<String, String>();
@@ -115,5 +109,43 @@ public class TodoController {
         gradingList.put("pc", "PARTIAL_COMPLETE");
         gradingList.put("c", "COMPLETE");
         return gradingList;
+    }*/
+/*example below*/
+//ModelAndView mav = null;
+    @ModelAttribute("gradingList")
+    public List getGrading()
+    {
+        List gradingList = new ArrayList();
+
+        gradingList.add("INCOMPLETE");
+        gradingList.add("PARTIAL-COMPLETE");
+        gradingList.add("COMPLETE");
+        return gradingList;
     }
+                    //DropdownExample
+    @RequestMapping("/GradingExample")
+    public String dispForm(Map model)
+    {
+        //DropdownBean db = new DropdownBean();
+        Todo db = new Todo();
+        model.put("db",db);
+        return "add-edit";
+
+    }
+                    //processCountry
+    @RequestMapping("/processGrading")                      //DropdownBean
+    public String processForm(@Valid @ModelAttribute("db") Todo db1,BindingResult result)
+    {
+        if(result.hasErrors())
+        {
+            System.out.println("Validation Failed");
+            return "add-edit";
+        }
+        else
+        {
+            System.out.println("Validated Successfully");
+            return "index";
+        }
+    }
+
 }

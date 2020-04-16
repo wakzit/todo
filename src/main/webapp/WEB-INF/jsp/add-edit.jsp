@@ -50,12 +50,12 @@ background-attachment: scroll;">
 
             <form:button class="btn btn-secondary" name="cancel">Cancel</form:button>
 
-            <form:label path = "grading">Grading</form:label>
-            <form:select path = "grading">
-                <form:option value = "NONE" label = "SELECT"/>
-                <form:options items = "${gradingList}" />
-            </form:select>
+
         </div>
+        <form:select path="grading">
+            <form:option value="" label="...." />
+            <form:options items="${gradingList}"/>
+        </form:select>
     </form:form>
 
 

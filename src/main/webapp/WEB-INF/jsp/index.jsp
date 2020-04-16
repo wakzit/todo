@@ -12,6 +12,7 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/jsp/nav-bar.jsp"/>
+
 <div class="container-fluid">
     <div class="row mt-4">
         <div class="col-12">
@@ -29,7 +30,9 @@
         </tr>
         </thead>
         <tbody>
+
         <c:forEach var="todo" items="${todos}">
+
         <tr>
             <th scope="row">${todo.id}</th>
             <td>
@@ -45,9 +48,18 @@
                     <a class="btn btn-secondary" href="${pageContext.request.contextPath}/todo/delete/${todo.id}">Delete</a>
                 </div>
             </td>
+
+            <td>
+                       ${todo.grading}
+             </td>
         </tr>
         </c:forEach>
     </table>
+    mee
+
+        mine
+
+    </ul>
 </div>
 </body>
 </html>
